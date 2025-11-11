@@ -1,3 +1,5 @@
+import { WeatherResponseSchema } from "./schemas/weatherSchema";
+
 interface location {
   lat: number;
   lon: number;
@@ -11,5 +13,5 @@ export async function getWeather({ lat, lon }: location) {
   );
   const data = await res.json();
 
-  return data;
+  return WeatherResponseSchema.parse(data);
 }
